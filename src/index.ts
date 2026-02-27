@@ -19,7 +19,7 @@ async function main(): Promise<void> {
   console.log(`Recipient address: ${recipientWallet.address}\n`)
 
   // Step 1 — generate + faucet-fund the sender wallet
-  const senderWallet = await step1ConnectAndFundWallet(client)
+  const senderWallet = await step1ConnectAndFundWallet()
 
   // Step 2 — wait until the faucet funding lands on-ledger
   await step2WaitForFunding(client, senderWallet.address)

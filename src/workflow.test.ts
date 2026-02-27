@@ -25,7 +25,7 @@ describe('XRPL payment workflow — integration', () => {
 
   it('completes the full payment workflow end-to-end on testnet', async () => {
     // ── Step 1: generate sender wallet and request faucet funding ────────────
-    const senderWallet = await step1ConnectAndFundWallet(client)
+    const senderWallet = await step1ConnectAndFundWallet()
 
     expect(senderWallet.address).toMatch(/^r[1-9A-HJ-NP-Za-km-z]{24,34}$/)
     expect(senderWallet.seed).toBeTruthy()

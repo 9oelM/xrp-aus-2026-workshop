@@ -10,8 +10,6 @@ const POLL_INTERVAL_MS = 2_000
 interface FaucetResponse {
   account: {
     address: string
-    xAddress?: string
-    classicAddress?: string
   }
   amount: number
   balance: number
@@ -43,7 +41,7 @@ function sleep(ms: number): Promise<void> {
  * Step 1: Generate a new wallet and request funding from the testnet faucet.
  * Returns immediately after submitting the faucet request.
  */
-export async function step1ConnectAndFundWallet(client: Client): Promise<Wallet> {
+export async function step1ConnectAndFundWallet(): Promise<Wallet> {
   const wallet = Wallet.generate()
   console.log(`[Step 1] Generated wallet address: ${wallet.address}`)
   console.log('[Step 1] Requesting funds from testnet faucet...')
@@ -66,7 +64,7 @@ export async function step1ConnectAndFundWallet(client: Client): Promise<Wallet>
 
 /**
  * Step 2: Poll the ledger until the account balance is non-zero.
- * Returns the funded XRP balance as a string.
+ * Returns the funded XRP balance.
  */
 export async function step2WaitForFunding(
   client: Client,
